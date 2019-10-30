@@ -7,7 +7,11 @@
 <script>
 /* eslint-disable */
 export default {
-  name: 'App'
-}
-/* eslint-disable */
+  name: "App"
+};
 </script>
+<style>
+.text-strikethrough {
+  text-decoration: line-through;
+}
+</style>

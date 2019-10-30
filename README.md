@@ -27,3 +27,12 @@ See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
 
 ## eslint annoying
 https://medium.com/the-node-js-collection/why-and-how-to-use-eslint-in-your-project-742d0bc61ed7
+
+
+
+echo "# quasar-sample" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/sofiaaaaaa/quasar-sample.git
+git push -u origin master

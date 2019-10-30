@@ -49,6 +49,7 @@ module.exports = {
     'prefer-promise-reject-errors': 'off',
     "comma-dangle": 'off',
     "semi": 'off',
+    "eol-last": "off",
     "space-before-function-paren":'off',
     // allow console.log during development only
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
