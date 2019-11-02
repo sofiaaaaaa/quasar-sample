@@ -6,13 +6,10 @@ module.exports = function(ctx) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/cli-documentation/boot-files
-    boot: [
-    ],
+    boot: [],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
-    css: [
-      'app.sass',
-    ],
+    css: ['app.sass'],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
@@ -24,7 +21,7 @@ module.exports = function(ctx) {
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
 
       'roboto-font', // optional, you are not bound to it
-      'material-icons', // optional, you are not bound to it
+      'material-icons' // optional, you are not bound to it
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
@@ -45,7 +42,7 @@ module.exports = function(ctx) {
       directives: [],
 
       // Quasar plugins
-      plugins: [],
+      plugins: ['Dialog']
     },
 
     // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
@@ -69,17 +66,17 @@ module.exports = function(ctx) {
           loader: 'eslint-loader',
           exclude: /node_modules/,
           options: {
-            formatter: require('eslint').CLIEngine.getFormatter('stylish'),
-          },
+            formatter: require('eslint').CLIEngine.getFormatter('stylish')
+          }
         });
-      },
+      }
     },
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
       // https: true,
       // port: 8080,
-      open: true, // opens browser window automatically
+      open: true // opens browser window automatically
     },
 
     // animations: 'all', // --- includes all animations
@@ -88,7 +85,7 @@ module.exports = function(ctx) {
 
     // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {
-      pwa: false,
+      pwa: false
     },
 
     // https://quasar.dev/quasar-cli/developing-pwa/configuring-pwa
@@ -107,30 +104,30 @@ module.exports = function(ctx) {
           {
             src: 'statics/icons/icon-128x128.png',
             sizes: '128x128',
-            type: 'image/png',
+            type: 'image/png'
           },
           {
             src: 'statics/icons/icon-192x192.png',
             sizes: '192x192',
-            type: 'image/png',
+            type: 'image/png'
           },
           {
             src: 'statics/icons/icon-256x256.png',
             sizes: '256x256',
-            type: 'image/png',
+            type: 'image/png'
           },
           {
             src: 'statics/icons/icon-384x384.png',
             sizes: '384x384',
-            type: 'image/png',
+            type: 'image/png'
           },
           {
             src: 'statics/icons/icon-512x512.png',
             sizes: '512x512',
-            type: 'image/png',
-          },
-        ],
-      },
+            type: 'image/png'
+          }
+        ]
+      }
     },
 
     // https://quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
@@ -150,22 +147,19 @@ module.exports = function(ctx) {
 
       packager: {
         // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
-
         // OS X / Mac App Store
         // appBundleId: '',
         // appCategoryType: '',
         // osxSign: '',
         // protocol: 'myapp://path',
-
         // Windows only
         // win32metadata: { ... }
       },
 
       builder: {
         // https://www.electron.build/configuration/configuration
-
         // appId: 'tutorial-project'
-      },
-    },
+      }
+    }
   };
 };

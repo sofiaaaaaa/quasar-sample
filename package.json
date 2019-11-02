@@ -14,12 +14,14 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "js-beautify": "^1.10.1-rc2",
     "quasar": "^1.0.0"
   },
   "devDependencies": {
     "@quasar/app": "^1.0.0",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
+    "css-loader": "^3.2.0",
     "eslint": "^5.16.0",
     "eslint-config-strongloop": "^2.1.0",
     "eslint-loader": "^2.1.1",

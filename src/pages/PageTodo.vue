@@ -1,70 +1,50 @@
 <template>
   <q-page class="q-pa-md">
-    <q-list bordered separator>
-      <q-item
-        v-for="task in tasks"
-        :key="task.id"
-        v-ripple
-        @click="task.completed = !task.completed"
-        :class="!task.completed ? 'bg-grey-1' : 'bg-green-1'"
-        clickable
-      >
-        <q-item-section side top>
-          <q-checkbox v-model="task.completed" />
-        </q-item-section>
+    <div class="row q-mb-lg">
+      <search></search>
+      <sort />
+    </div>
+    <p
+      v-if="search && !Object.keys(tasksTodo).length && !Object.keys(tasksCompleted).length"
+    >No Search Results</p>
+    <no-tasks v-if="!Object.keys(tasksTodo).length && !search"></no-tasks>
+    <tasks-todo v-if="Object.keys(tasksTodo).length" :tasksTodo="tasksTodo" />
+    <tasks-completed :tasksCompleted="tasksCompleted" v-if="Object.keys(tasksCompleted).length" />
+    <div class="absolute-bottom text-center q-mb-lg">
+      <q-btn @click="showAddTask = true" round color="primary" size="24" icon="add" />
+    </div>
 
-        <q-item-section>
-          <q-item-label :class="{'text-strikethrough': task.completed}">{{task.name}}</q-item-label>
-        </q-item-section>
-
-        <q-item-section side>
-          <div class="row">
-            <div class="column justify-center">
-              <q-icon name="event" size="18px" class="q-mr-xs" />
-            </div>
-            <div class="column">
-              <q-item-label class="row justify-end" caption>{{task.dueDate}}</q-item-label>
-              <small>
-                <q-item-label class="row justify-end" caption>{{task.dueTime}}</q-item-label>
-              </small>
-            </div>
-          </div>
-        </q-item-section>
-      </q-item>
-    </q-list>
+    <q-dialog v-model="showAddTask">
+      <add-task @close="showAddTask = false" />
+    </q-dialog>
   </q-page>
 </template>
 
 <script>
 /* eslint-disable */
-
+import { mapGetters, mapState } from "vuex";
 export default {
   data() {
     return {
-      tasks: [
-        {
-          id: 1,
-          name: "Go to shop",
-          completed: true,
-          dueDate: "2019/06/14",
-          dueTime: "12:30"
-        },
-        {
-          id: 2,
-          name: "Get bananas",
-          completed: false,
-          dueDate: "2019/06/14",
-          dueTime: "12:30"
-        },
-        {
-          id: 3,
-          name: "Get apples",
-          completed: false,
-          dueDate: "2019/06/14",
-          dueTime: "12:30"
-        }
-      ]
+      showAddTask: false
     };
+  },
+  computed: {
+    ...mapGetters("tasks", ["tasksTodo", "tasksCompleted"]),
+    ...mapState("tasks", ["search"])
+  },
+  mounted() {
+    this.$root.$on("showAddTask", () => {
+      this.showAddTask = true;
+    });
+  },
+  components: {
+    addTask: require("components/Tasks/Modals/AddTask.vue").default,
+    tasksTodo: require("components/Tasks/TasksTodo.vue").default,
+    tasksCompleted: require("components/Tasks/TasksCompleted.vue").default,
+    noTasks: require("components/Tasks/Modals/NoTasks.vue").default,
+    search: require("components/Tasks/Tools/Search.vue").default,
+    sort: require("components/Tasks/Tools/Sort.vue").default
   }
 };
 </script>
