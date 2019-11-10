@@ -1,5 +1,12 @@
 <template>
-  <q-input outlined v-select-all v-model="searchField" label="Search" class="col">
+  <q-input
+    outlined
+    @keyup.esc="searchField = ''"
+    v-select-all
+    v-model="searchField"
+    label="Search"
+    class="col"
+  >
     <template v-slot:append>
       <q-icon v-if="searchField !== ''" name="close" @click="searchField = ''" />
       <q-icon name="search" />

@@ -6,7 +6,7 @@ module.exports = function(ctx) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/cli-documentation/boot-files
-    boot: [],
+    boot: ['firebase', 'router-auth'],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
     css: ['app.sass'],
@@ -42,7 +42,7 @@ module.exports = function(ctx) {
       directives: [],
 
       // Quasar plugins
-      plugins: ['Dialog']
+      plugins: ['Dialog', 'LocalStorage', 'SessionStorage', 'Notify']
     },
 
     // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
@@ -81,7 +81,7 @@ module.exports = function(ctx) {
 
     // animations: 'all', // --- includes all animations
     // https://quasar.dev/options/animations
-    animations: [],
+    animations: ['zoomIn', 'zoomOut'],
 
     // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {

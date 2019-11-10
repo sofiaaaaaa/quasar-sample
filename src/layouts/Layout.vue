@@ -3,6 +3,22 @@
     <q-header elevated>
       <q-toolbar>
         <q-toolbar-title class="absolute-center">Awesome Todo</q-toolbar-title>
+        <q-btn
+          to="/auth"
+          v-if="!loggedIn"
+          flat
+          class="absolute-right"
+          icon-right="account_circle"
+          label="Login"
+        />
+        <q-btn
+          v-else
+          flat
+          @click="logoutUser"
+          class="absolute-right"
+          icon-right="account_circle"
+          label="Logout"
+        />
       </q-toolbar>
     </q-header>
 
@@ -53,31 +69,41 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
+import { openURL } from 'quasar';
+
 /* eslint-disable */
 export default {
-  name: "MyLayout",
+  name: 'MyLayout',
 
   data() {
     return {
       leftDrawerOpen: this.$q.platform.is.desktop,
       navs: [
         {
-          label: "Todo",
-          icon: "list",
-          to: "/"
+          label: 'Todo',
+          icon: 'list',
+          to: '/'
         },
         {
-          label: "Settings",
-          icon: "settings",
-          to: "/settings"
+          label: 'Settings',
+          icon: 'settings',
+          to: '/settings'
         },
         {
-          label: "About",
-          icon: "info",
-          to: "/about"
+          label: 'About',
+          icon: 'info',
+          to: '/about'
         }
       ]
     };
+  },
+  computed: {
+    ...mapState('auth', ['loggedIn'])
+  },
+  methods: {
+    ...mapActions('auth', ['logoutUser']),
+    openURL
   }
 };
 </script>
