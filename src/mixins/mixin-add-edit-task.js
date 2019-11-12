@@ -1,9 +1,7 @@
 export default {
   methods: {
     submitForm() {
-      console.log('submitForm');
       this.$refs.modalTaskName.$refs.name.validate();
-      console.log(this.$refs.modalTaskName.$refs.name);
       if (!this.$refs.modalTaskName.$refs.name.hasError) {
         this.submitTask();
       }
